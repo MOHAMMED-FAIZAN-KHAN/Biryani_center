@@ -2,7 +2,7 @@
 const menuItems = [
     { 
         id: 1, 
-        name: "Hyderabadi Dum Biryani", 
+        name: "Hyderabadi special Dum Biryani", 
         price: 349, 
         category: "biryani", 
         img: "https://dummyimage.com/400x300/FF6B35/FFFFFF?text=Hyderabadi+Biryani", 
@@ -13,7 +13,7 @@ const menuItems = [
     },
     { 
         id: 2, 
-        name: "Chicken Dum Biryani", 
+        name: "Chicken Dum tadka Biryani", 
         price: 299, 
         category: "biryani", 
         img: "https://dummyimage.com/400x300/FF6B35/FFFFFF?text=Chicken+Biryani",
@@ -23,7 +23,7 @@ const menuItems = [
     },
     { 
         id: 3, 
-        name: "Vegetable Biryani", 
+        name: "Veg Biryani", 
         price: 249, 
         category: "biryani", 
         img: "https://dummyimage.com/400x300/FF6B35/FFFFFF?text=Veg+Biryani", 
@@ -42,7 +42,7 @@ const menuItems = [
     },
     { 
         id: 5, 
-        name: "Egg Biryani", 
+        name: "Egg masala Biryani", 
         price: 269, 
         category: "biryani", 
         img: "https://dummyimage.com/400x300/FF6B35/FFFFFF?text=Egg+Biryani", 
