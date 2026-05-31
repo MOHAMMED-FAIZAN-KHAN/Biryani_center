@@ -1,0 +1,166 @@
+/* Footer Styles */
+
+footer {
+    background: rgba(2, 43, 58, 0.98);
+    padding: 60px 0 20px;
+    margin-top: 80px;
+    border-top: 1px solid rgba(255, 107, 53, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://i.ibb.co/0nQzYJX/spices-pattern.png');
+    opacity: 0.03;
+    z-index: -1;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-col h3 {
+    color: var(--primary);
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    text-shadow: var(--text-shadow);
+}
+
+.footer-col p {
+    margin-bottom: 20px;
+    opacity: 0.8;
+    text-shadow: var(--text-shadow);
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: var(--light);
+    text-decoration: none;
+    transition: var(--transition);
+    opacity: 0.8;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    text-shadow: var(--text-shadow);
+}
+
+.footer-links a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--primary);
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+    opacity: 1;
+    transform: translateX(5px);
+}
+
+.footer-links a:hover::before {
+    width: 100%;
+}
+
+.footer-social {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.footer-social a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light);
+    transition: var(--transition);
+    text-shadow: var(--text-shadow);
+    transform-style: preserve-3d;
+    transform: perspective(500px);
+}
+
+.footer-social a:hover {
+    background: var(--primary);
+    color: var(--dark);
+    transform: perspective(500px) translateY(-5px) rotateX(10deg);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 12px 15px;
+    border-radius: 30px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--light);
+    outline: none;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+}
+
+.newsletter-form input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+}
+
+.newsletter-form button {
+    padding: 12px 20px;
+    background: var(--primary);
+    color: var(--dark);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: var(--transition);
+    transform-style: preserve-3d;
+    transform: perspective(500px);
+}
+
+.newsletter-form button:hover {
+    background: var(--gold);
+    transform: perspective(500px) translateY(-3px) rotateX(5deg);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0.7;
+    font-size: 0.9rem;
+    text-shadow: var(--text-shadow);
+}
+
+.footer-bottom i {
+    color: var(--danger);
+}

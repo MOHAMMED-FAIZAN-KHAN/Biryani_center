@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAWABS ONLINE RESTAURANT | World's Finest Biryani</title>
+    
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Internal Stylesheets -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/notifications.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <div class="logo">
+                <i class="fas fa-utensils"></i>
+                <span>NAWABS ONLINE RESTAURANT</span>
+            </div>
+            <p style="margin-top: 20px; color: var(--secondary);">Loading the royal biryani experience...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="logo">
+            <i class="fas fa-utensils"></i>
+            <span>NAWABS ONLINE RESTAURANT</span>
+        </div>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#menu" class="nav-link" data-page="menu">Menu</a></li>
+                <li><a href="#about" class="nav-link" data-page="about">About</a></li>
+                <li><a href="#login" class="nav-link" data-page="login">Login</a></li>
+                <li><a href="#cart" class="nav-link" data-page="cart"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Pages -->
+    <main id="main-content">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="particles" id="particles"></div>
+            <div class="floating-biryani" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
+            <div class="floating-biryani" style="top: 70%; left: 80%; animation-delay: 1s;"></div>
+            <div class="floating-biryani" style="top: 40%; left: 60%; animation-delay: 2s;"></div>
+            <div class="floating-biryani" style="top: 80%; left: 20%; animation-delay: 3s;"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="animate-fade text-3d">HYDERABADI BIRYANI</h1>
+                    <p class="animate-fade delay-1">Since 1985 - Preserving the Royal Nizami Tradition</p>
+                    <div class="animate-fade delay-2">
+                        <a href="#menu" class="btn btn-primary" id="explore-menu-btn">
+                            <i class="fas fa-utensils"></i> Explore Menu
+                        </a>
+                        <a href="#login" class="btn btn-outline" data-page="login">
+                            <i class="fas fa-user"></i> Login/Signup
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Page -->
+        <section id="menu" class="page">
+            <div class="container">
+                <div class="section-title animate-left">
+                    <h2 class="text-3d">Our Specialties</h2>
+                    <p>Discover our authentic biryani varieties and accompaniments</p>
+                </div>
+                
+                <div class="search-container animate-left delay-1">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchBar" class="search-bar" placeholder="Search for biryani, kebabs, etc...">
+                </div>
+                
+                <div class="menu-filter animate-left delay-1">
+                    <button class="filter-btn active" data-category="all">All Items</button>
+                    <button class="filter-btn" data-category="biryani">Biryani</button>
+                    <button class="filter-btn" data-category="kebab">Kebabs</button>
+                    <button class="filter-btn" data-category="curry">Curries</button>
+                    <button class="filter-btn" data-category="dessert">Desserts</button>
+                </div>
+                
+                <div class="menu-container" id="menuItems"></div>
+            </div>
+        </section>
+
+        <!-- About Page -->
+        <section id="about" class="page">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text animate-left">
+                        <div class="section-title">
+                            <h2 class="text-3d">Our Story</h2>
+                            <p>Since 1985, serving authentic Hyderabadi flavors</p>
+                        </div>
+                        <h3>The Nawabs Legacy</h3>
+                        <p>Founded by Nawas Ali Khan in the heart of Hyderabad, our restaurant has been the guardian of authentic Dum Biryani recipes for over three decades. What started as a small family kitchen is now a celebrated culinary destination.</p>
+                        <p>We still use the same traditional methods - slow cooking in sealed handis, premium aged basmati rice, and the perfect blend of 17 spices that make our biryani legendary.</p>
+                        
+                        <div class="features">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-mortar-pestle"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Traditional Methods</h4>
+                                    <p>Authentic dum pukht technique</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-seedling"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Premium Ingredients</h4>
+                                    <p>Farm-fresh produce & aged spices</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Slow Cooked</h4>
+                                    <p>6-8 hours of preparation</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-award"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Award Winning</h4>
+                                    <p>5 times "Best Biryani" winner</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-img animate-right">
+                        <img src="https://i.ibb.co/0nQzYJX/hyderabadi-chef.jpg" alt="Our Master Chef">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Login Page -->
+        <section id="login" class="page">
+            <div class="container">
+                <div class="login-container auth-shell animate-fade">
+                    <div class="auth-info">
+                        <span class="auth-badge">Member Access</span>
+                        <h2>Welcome to the Nawabs Table</h2>
+                        <p>Log in or create your account to enjoy faster ordering, saved favorites, and priority updates from our kitchen.</p>
+                        <ul class="auth-points">
+                            <li><i class="fas fa-check"></i> Reorder past meals in seconds</li>
+                            <li><i class="fas fa-check"></i> Track delivery updates in real time</li>
+                            <li><i class="fas fa-check"></i> Earn exclusive member offers</li>
+                        </ul>
+                        <div class="auth-trust">
+                            <div class="trust-item">
+                                <i class="fas fa-shield-halved"></i>
+                                <span>Encrypted sign-in</span>
+                            </div>
+                            <div class="trust-item">
+                                <i class="fas fa-clock"></i>
+                                <span>30-sec checkout</span>
+                            </div>
+                            <div class="trust-item">
+                                <i class="fas fa-star"></i>
+                                <span>5-star service promise</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="auth-card">
+                        <div class="auth-card-header">
+                            <div class="login-logo">
+                                <div class="logo">
+                                    <i class="fas fa-utensils"></i>
+                                    <span>NAWABS ONLINE RESTAURANT</span>
+                                </div>
+                                <p>Sign in to order your favorite biryani</p>
+                            </div>
+                            <div class="auth-tabs" role="tablist" aria-label="Authentication">
+                                <button class="auth-tab active" id="login-tab" type="button" role="tab" aria-selected="true" aria-controls="loginForm" data-auth-tab="login">Login</button>
+                                <button class="auth-tab" id="signup-tab" type="button" role="tab" aria-selected="false" aria-controls="signupForm" data-auth-tab="signup">Sign Up</button>
+                            </div>
+                        </div>
+
+                        <form id="loginForm" class="auth-form is-active" data-auth-form="login" role="tabpanel" aria-labelledby="login-tab" aria-live="polite">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password" minlength="6" required>
+                                <small class="form-hint">Use at least 6 characters.</small>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <div class="remember-me">
+                                    <input type="checkbox" id="remember" name="remember">
+                                    <label for="remember">Remember me</label>
+                                </div>
+                                <a href="#" class="forgot-password">Forgot password?</a>
+                            </div>
+                            
+                            <button type="submit" class="login-btn">
+                                <i class="fas fa-sign-in-alt"></i> Login
+                            </button>
+
+                            <div class="auth-footer">
+                                <span>New here?</span>
+                                <a href="#" class="auth-switch" data-auth-switch="signup">Create an account</a>
+                            </div>
+                        </form>
+
+                        <form id="signupForm" class="auth-form" data-auth-form="signup" role="tabpanel" aria-labelledby="signup-tab" aria-live="polite">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" id="firstName" name="firstName" placeholder="Nawas" autocomplete="given-name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" id="lastName" name="lastName" placeholder="Khan" autocomplete="family-name" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="signupEmail">Email Address</label>
+                                <input type="email" id="signupEmail" name="signupEmail" placeholder="you@example.com" autocomplete="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone (optional)</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+91 98 7654 3210" inputmode="tel" autocomplete="tel">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="signupPassword">Create Password</label>
+                                <input type="password" id="signupPassword" name="signupPassword" placeholder="Create a secure password" autocomplete="new-password" minlength="6" required>
+                                <small class="form-hint">Mix letters and numbers for extra security.</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm Password</label>
+                                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" autocomplete="new-password" minlength="6" required>
+                            </div>
+
+                            <div class="form-actions form-actions-stack">
+                                <div class="remember-me">
+                                    <input type="checkbox" id="terms" name="terms" required>
+                                    <label for="terms">I agree to the Terms & Privacy Policy</label>
+                                </div>
+                                <span class="form-note">We never share your data without consent.</span>
+                            </div>
+
+                            <button type="submit" class="login-btn">
+                                <i class="fas fa-user-plus"></i> Create Account
+                            </button>
+
+                            <div class="auth-footer">
+                                <span>Already a member?</span>
+                                <a href="#" class="auth-switch" data-auth-switch="login">Sign in instead</a>
+                            </div>
+                        </form>
+
+                        <div class="social-login compact">
+                            <p>Or continue with</p>
+                            <div class="social-icons">
+                                <a href="#" class="social-icon facebook" aria-label="Continue with Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="social-icon google" aria-label="Continue with Google">
+                                    <i class="fab fa-google"></i>
+                                </a>
+                                <a href="#" class="social-icon twitter" aria-label="Continue with Twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cart Page -->
+        <section id="cart" class="page">
+            <div class="container">
+                <div class="section-title animate-fade">
+                    <h2 class="text-3d">Your Biryani Basket</h2>
+                    <p>Review your order before checkout</p>
+                </div>
+                
+                <div class="cart-container">
+                    <div class="cart-items animate-left">
+                        <h3>Your Selected Items</h3>
+                        <div id="cart-items-list">
+                            <div class="empty-cart-message">
+                                <i class="fas fa-shopping-basket"></i>
+                                <p>Your cart is empty</p>
+                                <a href="#menu" class="btn btn-primary" id="empty-cart-menu-btn">Explore Our Menu</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cart-summary animate-right">
+                        <h3 class="summary-title">Order Summary</h3>
+                        <div class="summary-item">
+                            <span>Subtotal</span>
+                            <span id="subtotal">₹0.00</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Delivery Fee</span>
+                            <span id="delivery-fee">₹49.00</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Tax (5%)</span>
+                            <span id="tax">₹0.00</span>
+                        </div>
+                        <div class="summary-item summary-total">
+                            <span>Total</span>
+                            <span id="total">₹49.00</span>
+                        </div>
+                        <button class="checkout-btn" id="checkout-btn">
+                            <i class="fas fa-lock"></i> Proceed to Checkout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span>Item added to cart!</span>
+    </div>
+
+    <!-- External Libraries Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    
+    <!-- Internal Scripts (Load in specific order) -->
+    <script src="js/data.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

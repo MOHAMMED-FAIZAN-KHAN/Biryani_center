@@ -1,0 +1,113 @@
+/* About Section Styles */
+
+#about {
+    background: linear-gradient(rgba(2, 43, 58, 0.9), rgba(2, 43, 58, 0.9)), 
+                url('https://i.ibb.co/0nQzYJX/hyderabadi-chef.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-img {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    border: 5px solid var(--gold);
+    transition: var(--transition);
+}
+
+.about-img:hover {
+    transform: perspective(1000px) rotateY(5deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.about-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: var(--transition);
+}
+
+.about-img:hover img {
+    transform: scale(1.05);
+}
+
+.about-text h3 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    text-shadow: var(--text-shadow);
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    line-height: 1.7;
+    opacity: 0.9;
+    text-shadow: var(--text-shadow);
+}
+
+.features {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.feature-item {
+    display: flex;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+    transition: var(--transition);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform-style: preserve-3d;
+    transform: perspective(500px);
+}
+
+.feature-item:hover {
+    transform: perspective(500px) translateY(-5px) rotateX(5deg);
+    border-color: var(--primary);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.feature-icon {
+    color: var(--primary);
+    font-size: 1.8rem;
+    min-width: 50px;
+    height: 50px;
+    background: rgba(255, 107, 53, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.feature-item:hover .feature-icon {
+    background: var(--primary);
+    color: var(--dark);
+    transform: rotateY(180deg);
+}
+
+.feature-text h4 {
+    margin-bottom: 5px;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.feature-text p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 0;
+}
