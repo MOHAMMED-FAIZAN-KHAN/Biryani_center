@@ -46,11 +46,11 @@
 
 .hero-content h1:hover {
     transform: scale(1.02);
-    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    text-shadow: 0 0 20px rgba(255, 214, 0, 0.5);
 }
 
 .hero-content h1::after {
-    content: 'NAWABS SPECIAL';
+    content: "NAWAB'S SPECIAL";
     position: absolute;
     bottom: -15px;
     left: 50%;

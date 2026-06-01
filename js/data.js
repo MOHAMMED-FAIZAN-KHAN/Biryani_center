@@ -91,11 +91,11 @@ const menuItems = [
     },
     { 
         id: 10, 
-        name: "Mirchi Ka Salan", 
+        name: "Mirch Ka Saalan", 
         price: 149, 
         category: "curry", 
         img: "https://dummyimage.com/400x300/FF6B35/FFFFFF?text=Mirchi+Ka+Salan", 
-        desc: "Spicy peanut and sesame based curry with whole green chilies", 
+        desc: "Spicy chicken and sesame based curry with whole green chilies", 
         rating: 4
     },
     { 
@@ -109,11 +109,11 @@ const menuItems = [
     },
     { 
         id: 12, 
-        name: "Qubani Ka Meetha", 
+        name: "rasmalai", 
         price: 139, 
         category: "dessert", 
-        img: "https://dummyimage.com/400x300/FF6B35/FFFFFF?text=Qubani+Ka+Meetha", 
-        desc: "Apricot dessert with cream and nuts, Nizami special", 
+        img: "https://dummyimage.com/400x300/FF6B35/FFFFFF?text=Rasmalai", 
+        desc: "Soft cottage cheese balls in sweetened milk, Nizami special", 
         rating: 5,
         chefSpecial: true
     }

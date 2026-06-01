@@ -37,13 +37,13 @@ header.scrolled {
 .logo i {
     font-size: 32px;
     color: var(--gold);
-    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+    filter: drop-shadow(0 0 5px rgba(254, 215, 0, 0.5));
     transition: var(--transition);
 }
 
 .logo:hover i {
     transform: rotate(15deg) scale(1.1);
-    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+    filter: drop-shadow(0 0 10px rgba(254, 215, 0, 0.8));
 }
 
 nav ul {
