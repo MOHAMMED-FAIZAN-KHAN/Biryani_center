@@ -2218,6 +2218,70 @@
                 </div>
             </div>
         </section>
+
+        <!-- Payment Page -->
+        <section id="payment" class="page">
+            <div class="container">
+                <div class="section-title animate-fade">
+                    <h2 class="text-3d">Payment & Order Confirmation</h2>
+                    <p>Securely pay and confirm your order</p>
+                </div>
+
+                <div class="cart-container">
+                    <div class="cart-items animate-left">
+                        <h3>Payment Method</h3>
+                        <form id="paymentForm" class="auth-card">
+                            <div class="form-group">
+                                <label for="cardName">Name on Card</label>
+                                <input id="cardName" type="text" placeholder="Full name as on card" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cardNumber">Card Number</label>
+                                <input id="cardNumber" type="text" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="cardExpiry">Expiry (MM/YY)</label>
+                                    <input id="cardExpiry" type="text" maxlength="5" placeholder="MM/YY" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cardCvv">CVV</label>
+                                    <input id="cardCvv" type="password" maxlength="4" placeholder="123" inputmode="numeric" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="billingAddress">Delivery Address</label>
+                                <input id="billingAddress" type="text" placeholder="Street, City, ZIP" required>
+                            </div>
+                            <button type="submit" id="pay-btn" class="checkout-btn">
+                                <i class="fas fa-credit-card"></i> Pay Now
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="cart-summary animate-right">
+                        <h3 class="summary-title">Order Summary</h3>
+                        <div id="payment-summary-list"></div>
+                        <div class="summary-item">
+                            <span>Subtotal</span>
+                            <span id="payment-subtotal">₹0.00</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Delivery Fee</span>
+                            <span id="payment-delivery">₹0.00</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Tax (5%)</span>
+                            <span id="payment-tax">₹0.00</span>
+                        </div>
+                        <div class="summary-item summary-total">
+                            <span>Total</span>
+                            <span id="payment-total">₹0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Notification -->
@@ -2536,10 +2600,21 @@
             if (loginForm) {
                 loginForm.addEventListener('submit', (e) => {
                     e.preventDefault();
-                    showNotification('Logged in successfully!', 'success');
-                    setTimeout(() => {
-                        showPage('home');
-                    }, 1500);
+                    const email = loginForm.querySelector('#email').value.trim().toLowerCase();
+                    const password = loginForm.querySelector('#password').value;
+
+                    const users = JSON.parse(localStorage.getItem('users')) || [];
+                    const matched = users.find(u => u.email === email && u.password === password);
+
+                    if (matched) {
+                        localStorage.setItem('user', JSON.stringify({ email: matched.email, name: matched.firstName || matched.email }));
+                        showNotification('Logged in successfully!', 'success');
+                        setTimeout(() => {
+                            showPage('home');
+                        }, 900);
+                    } else {
+                        showNotification('Invalid credentials. Try signing up.', 'error');
+                    }
                 });
             }
 
@@ -2555,27 +2630,54 @@
                         return;
                     }
 
+                    const newUser = {
+                        firstName: signupForm.querySelector('#firstName').value.trim(),
+                        lastName: signupForm.querySelector('#lastName').value.trim(),
+                        email: signupForm.querySelector('#signupEmail').value.trim().toLowerCase(),
+                        phone: signupForm.querySelector('#phone').value.trim(),
+                        password: password.value
+                    };
+
+                    const users = JSON.parse(localStorage.getItem('users')) || [];
+                    if (users.find(u => u.email === newUser.email)) {
+                        showNotification('An account with this email already exists.', 'error');
+                        return;
+                    }
+
+                    users.push(newUser);
+                    localStorage.setItem('users', JSON.stringify(users));
+                    localStorage.setItem('user', JSON.stringify({ email: newUser.email, name: newUser.firstName }));
+
                     showNotification('Account created! Welcome to Nawabs.', 'success');
                     setTimeout(() => {
                         showPage('home');
-                    }, 1500);
+                    }, 900);
                 });
             }
 
-            // Checkout button
+            // Checkout button - require authentication and route to payment
             checkoutBtn.addEventListener('click', () => {
-                if (cart.length > 0) {
-                    showNotification('Order placed successfully!', 'success');
-                    setTimeout(() => {
-                        cart = [];
-                        saveCart();
-                        updateCartCount();
-                        renderCart();
-                        showPage('home');
-                    }, 2000);
-                } else {
+                console.log('checkout clicked', { cartLength: cart.length, cart, user: JSON.parse(localStorage.getItem('user')) });
+                if (cart.length === 0) {
                     showNotification('Your cart is empty!', 'error');
+                    return;
                 }
+
+                const user = JSON.parse(localStorage.getItem('user'));
+                if (!user || !user.email) {
+                    showNotification('Please login to proceed to checkout', 'info');
+                    setTimeout(() => {
+                        showPage('login');
+                        // ensure login tab is active
+                        setActiveAuth('login');
+                    }, 700);
+                    return;
+                }
+
+                // Show payment page
+                console.log('navigating to payment');
+                showPage('payment');
+                populatePaymentSummary();
             });
         }
 
@@ -2836,6 +2938,90 @@
             setTimeout(() => {
                 notification.classList.remove('show');
             }, 3000);
+        }
+
+        // Populate payment summary from cart
+        function populatePaymentSummary() {
+            const list = document.getElementById('payment-summary-list');
+            const subtotalElP = document.getElementById('payment-subtotal');
+            const deliveryEl = document.getElementById('payment-delivery');
+            const taxElP = document.getElementById('payment-tax');
+            const totalElP = document.getElementById('payment-total');
+
+            if (!list) return;
+            list.innerHTML = '';
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const deliveryFee = subtotal > 0 ? 49 : 0;
+            const tax = subtotal * 0.05;
+            const total = subtotal + deliveryFee + tax;
+
+            cart.forEach(item => {
+                const row = document.createElement('div');
+                row.className = 'summary-item';
+                row.innerHTML = `<span>${item.name} × ${item.quantity}</span><span>₹${(item.price * item.quantity).toFixed(2)}</span>`;
+                list.appendChild(row);
+            });
+
+            subtotalElP.textContent = `₹${subtotal.toFixed(2)}`;
+            deliveryEl.textContent = `₹${deliveryFee.toFixed(2)}`;
+            taxElP.textContent = `₹${tax.toFixed(2)}`;
+            totalElP.textContent = `₹${total.toFixed(2)}`;
+        }
+
+        // Handle payment form submission (mock)
+        const paymentForm = document.getElementById('paymentForm');
+        if (paymentForm) {
+            paymentForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                console.log('paymentForm submit', { cartLength: cart.length, cart });
+
+                // Basic validation
+                const name = document.getElementById('cardName').value.trim();
+                const card = document.getElementById('cardNumber').value.replace(/\s+/g, '');
+                const expiry = document.getElementById('cardExpiry').value.trim();
+                const cvv = document.getElementById('cardCvv').value.trim();
+                const address = document.getElementById('billingAddress').value.trim();
+
+                if (!name || card.length < 12 || !expiry || cvv.length < 3 || !address) {
+                    showNotification('Please complete all payment fields correctly.', 'error');
+                    return;
+                }
+
+                showNotification('Processing payment...', 'info');
+                // Simulate payment delay
+                setTimeout(() => {
+                    // Create order
+                    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+                    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                    const deliveryFee = subtotal > 0 ? 49 : 0;
+                    const tax = subtotal * 0.05;
+                    const total = subtotal + deliveryFee + tax;
+
+                    const order = {
+                        id: Date.now(),
+                        user: JSON.parse(localStorage.getItem('user')) || null,
+                        items: cart.slice(),
+                        subtotal, deliveryFee, tax, total,
+                        address,
+                        createdAt: new Date().toISOString()
+                    };
+
+                    orders.push(order);
+                    localStorage.setItem('orders', JSON.stringify(orders));
+
+                    // Clear cart
+                    cart = [];
+                    saveCart();
+                    updateCartCount();
+                    renderCart();
+
+                    showNotification('Payment successful! Order confirmed.', 'success');
+                    setTimeout(() => {
+                        showPage('home');
+                    }, 1200);
+                }, 1200);
+            });
         }
 
         // Initialize the app
